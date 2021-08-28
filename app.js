@@ -3,14 +3,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require ('path');
 const handlebars = require('express-handlebars');
+const {mongoDbUrl, PORT} = require('./config/config');
 
 // Connection values (port/mongoDB string etc)
-const port = 3000;
-const mongoDBString = 'mongodb+srv://Dion:uyvcRuZPiEpjmNpe@cluster0.bc7xo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+
 const app = express();
 
+// Create server + start it
+app.listen(PORT, () => {
+    console.log("Server is running on port " + PORT)
+});
+
 // Config Mongoose connection to MongoDB
-mongoose.connect(mongoDBString)
+mongoose.connect(mongoDbUrl)
     .then(response => {
         console.log("MongoDB connection successful");
     }).catch( err => {
@@ -24,13 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 // Anyone using localhost:3000 will get this response
-app.use('/', (req, res) => {
-    res.send("Welcome to the CMS application");
-});
-
-// Create server + start it
-app.listen(port, () => {
-   console.log("Server is running on port " + port)
+app.use((req, res) => {
+    res.render('default/index.handlebars');
 });
 
 // View Engine setup using Handlebars

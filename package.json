@@ -1,0 +1,19 @@
+{
+  "name": "cms_showcase",
+  "version": "1.0.0",
+  "description": "CMS using Node allowing registered users to upload/edit photos in persistent sessions.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dion-perez/CMS_Showcase.git"
+  },
+  "author": "Dion Perez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dion-perez/CMS_Showcase/issues"
+  },
+  "homepage": "https://github.com/dion-perez/CMS_Showcase#readme"
+}

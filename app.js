@@ -4,9 +4,6 @@ const mongoose = require('mongoose');
 const path = require ('path');
 const handlebars = require('express-handlebars');
 const {mongoDbUrl, PORT} = require('./config/config');
-
-// Connection values (port/mongoDB string etc)
-
 const app = express();
 
 // Create server + start it
@@ -28,10 +25,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-// Anyone using localhost:3000 will get this response
-app.use((req, res) => {
-    res.render('default/index.handlebars');
-});
+const defaultRoutes = require('./routes/defaultRoutes');
+app.use('/', defaultRoutes);
+// app.use('/admin', adminRoutes);
 
 // View Engine setup using Handlebars
 app.engine('handlebars', handlebars({defaultLayout: 'default'}));

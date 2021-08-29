@@ -3,7 +3,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require ('path');
 const handlebars = require('express-handlebars');
+
+// MongoDB connection
 const {mongoDbUrl, PORT} = require('./config/config');
+
 const app = express();
 
 // Create server + start it
@@ -26,8 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 const defaultRoutes = require('./routes/defaultRoutes');
+const adminRoutes = require ('./routes/adminRoutes')
 app.use('/', defaultRoutes);
-// app.use('/admin', adminRoutes);
+app.use('/admin', adminRoutes);
 
 // View Engine setup using Handlebars
 app.engine('handlebars', handlebars({defaultLayout: 'default'}));

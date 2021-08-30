@@ -46,7 +46,13 @@ const PostSchema = new Schema({
             // CommentModel
             ref: 'comment'
         }
-    ]
+    ],
+
+    // Can people make comments on the post
+    allowComments: {
+        type: Boolean,
+        default: false
+    },
 
 });
 

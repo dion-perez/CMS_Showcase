@@ -1,3 +1,4 @@
+<!--Post Index-->
 <div class="container">
     <div class="alert alert-secondary text-center">
         <h1>All Posts</h1>
@@ -6,21 +7,22 @@
     <table class="table table-bordered ">
         <thead class="bg-dark text-center">
         <tr class="text-white">
-            <th>ID</th>
             <th>Title</th>
             <th>Description</th>
             <th>Status</th>
+            <th>CommentAllowed</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody class="text-center">
         <!-- Helper function #each-->
         {{#each posts}}
-
             <tr>
-                <td>{{_id}}</td>
                 <td>{{title}}</td>
                 <td>{{description}}</td>
                 <td>{{status}}</td>
+                <td>{{allowComments}}</td>
+                <td><a href="/admin/posts/edit/{{_id}}" class="btn btn-sm btn-info"/>Edit Post</td>
             </tr>
         {{/each}}
         </tbody>

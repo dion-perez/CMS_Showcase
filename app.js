@@ -5,6 +5,7 @@ const path = require ('path');
 const handlebars = require('express-handlebars');
 const flash = require('connect-flash');
 const session = require('express-session');
+const methodOverride = require ('method-override');
 
 // MongoDB connection, globalVariables imported here
 const {mongoDbUrl, PORT, globalVariables} = require('./config/config');
@@ -50,6 +51,9 @@ app.engine('handlebars', handlebars({
     }
 }));
 app.set('view engine', 'handlebars');
+
+// Method Override Midware
+app.use(methodOverride('newMethod'));
 
 // Create server + start it, assuming everything else runs fine
 app.listen(PORT, () => {

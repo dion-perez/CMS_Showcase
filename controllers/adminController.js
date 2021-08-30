@@ -16,10 +16,16 @@ module.exports = {
     },
 
     submitPosts: (req, res) => {
+
+        // Ternary;
+        // if post has allow comments, set it to true, otherwise to false
+        const commentsAllowed = req.body.allowComments ? true: false;
+
         const newPost = new post({
             title: req.body.title,
             description: req.body.description,
-            status: req.body.status
+            status: req.body.status,
+            allowComments: commentsAllowed
         });
 
         newPost.save().then(post => {
@@ -32,4 +38,16 @@ module.exports = {
     createPosts: (req, res) => {
         res.render('admin/posts/create');
     },
+
+    editPost: (req, res) => {
+        // Find the post, send an id param whilst accessing this endpoint
+        const id = req.params.id;
+
+        // .then() because it's a promise
+        post.findById(id).then(post => {
+            // Render and send this post as an object to the view
+            res.render('admin/posts/edit', {post: post});
+        });
+    },
+
 }

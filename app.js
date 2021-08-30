@@ -3,9 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require ('path');
 const handlebars = require('express-handlebars');
-const flash = require('flash');
+const flash = require('connect-flash');
 const session = require('express-session');
-
 
 // MongoDB connection, globalVariables imported here
 const {mongoDbUrl, PORT, globalVariables} = require('./config/config');

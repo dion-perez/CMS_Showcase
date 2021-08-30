@@ -6,7 +6,7 @@ module.exports = {
     },
     
     getPosts: (req, res) => {
-        res.send('All Posts');
+        res.render('admin/posts/index');
     },
 
     submitPosts: (req, res) => {
@@ -19,7 +19,7 @@ module.exports = {
         newPost.save().then(post => {
             console.log(post);
             req.flash('success-message', 'Post created successfully');
-            res.redirect('admin/posts');
+            res.redirect('/admin/posts');
         });
 
     },

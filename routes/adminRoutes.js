@@ -11,6 +11,7 @@ router.all('/*', (req, res, next) => {
 });
 
 // Admin controller with index method
+// Default route
 router.route('/')
     .get(adminController.index);
 
@@ -22,6 +23,12 @@ router.route('/posts/create')
     .post(adminController.submitPosts);
 
 router.route('/posts/edit/:id')
-    .get(adminController.editPost);
+    .get(adminController.editPostGetRoute)
+    .post(adminController.editPostUpdateRoute);
+
+router.route('/posts/delete/:id')
+    .post(adminController.deletePost);
+    // .delete doesn't work, post must be used instead and is overridden by method-override in app.js
+    //.delete(adminController.deletePost);
 
 module.exports = router;

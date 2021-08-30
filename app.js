@@ -14,7 +14,7 @@ const app = express();
 
 // Config express - .Use, configure middleware/plugins
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Flash/Sessions
@@ -53,7 +53,7 @@ app.engine('handlebars', handlebars({
 app.set('view engine', 'handlebars');
 
 // Method Override Midware
-app.use(methodOverride('newMethod'));
+app.use(methodOverride('_method'));
 
 // Create server + start it, assuming everything else runs fine
 app.listen(PORT, () => {

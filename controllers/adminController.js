@@ -1,12 +1,17 @@
-const {response} = require("express");
 const post = require ('../models/PostModel');
+
 module.exports = {
     index: (req, res) => {
         res.render('admin/index');
     },
     
     getPosts: (req, res) => {
-        res.render('admin/posts/index');
+        // Mongoose .find() method, return everything in Post collection
+        post.find().then(posts => {
+            // Grab all posts when page is rendered
+            res.render('admin/posts/index', {posts: posts});
+        });
+
     },
 
     submitPosts: (req, res) => {

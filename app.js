@@ -42,7 +42,13 @@ app.use('/', defaultRoutes);
 app.use('/admin', adminRoutes);
 
 // View Engine setup using Handlebars
-app.engine('handlebars', handlebars({defaultLayout: 'default'}));
+app.engine('handlebars', handlebars({
+    defaultLayout: 'default',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+    }
+}));
 app.set('view engine', 'handlebars');
 
 // Create server + start it, assuming everything else runs fine

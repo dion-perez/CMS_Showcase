@@ -5,13 +5,14 @@ module.exports = {
         res.render('admin/index');
     },
     
+    // Mongoose .find() method, return everything in Post collection
+    // Can also use find().lean() instead of runtimeOptions in app.js app.engine setup
+    // to fix "it is not an own property" error.
     getPosts: (req, res) => {
-        // Mongoose .find() method, return everything in Post collection
         post.find().then(posts => {
             // Grab all posts when page is rendered
             res.render('admin/posts/index', {posts: posts});
         });
-
     },
 
     submitPosts: (req, res) => {
@@ -26,7 +27,6 @@ module.exports = {
             req.flash('success-message', 'Post created successfully');
             res.redirect('/admin/posts');
         });
-
     },
 
     createPosts: (req, res) => {

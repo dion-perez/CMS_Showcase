@@ -57,7 +57,7 @@ module.exports = {
 
     editPostUpdateRoute: (req, res) => {
         const commentsAllowed = req.body.allowComments ? true : false;
-        // const id = req.params.id;
+        const id = req.params.id;
         // const label = req.body.status;
         // const description = req.body.description;
         // const title = req.body.title;

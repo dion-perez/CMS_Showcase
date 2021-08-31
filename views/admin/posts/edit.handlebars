@@ -1,13 +1,17 @@
 <div class="container">
-    <h1>Edit Post</h1>
+    <div class="alert alert-secondary text-left">
+        <h1>Edit Post</h1>
+    </div>
 
     <div class="row p-4">
         <div class="col-md-10">
             <form action="/admin/posts/edit/{{post._id}}?_method=PUT" method="post">
+
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input name="title" id="title" type="text" class class="form-control" value="{{post.title}}">
+                    <label style="" for="title">Title</label>
+                    <input name="title" id="title" type="text" class="form-control" value="{{post.title}}">
                 </div>
+
                 <div class="form-group">
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control">
@@ -19,13 +23,12 @@
 
                 <div class="form-check ml-1">
                     <label for="allowComments">
-                        <input type="checkbox" class="form-check-input" id="allowComments" name="allowComments">
-                        Allow Comments
+                        <input type="checkbox" class="form-check-input" id="allowComments" name="allowComments">Allow Comments
                     </label>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description</label>
+                    <label for="description">Post Description</label>
                     <textarea name="description" id="description" class="form-control" placeholder="Enter content here" rows="10">{{post.description}}</textarea>
                 </div>
 

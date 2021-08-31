@@ -19,8 +19,7 @@ module.exports = {
         res.render('admin/posts/create');
     },
 
-    submitPosts: (req, res) => {
-
+    submitPosts: (req, res, next) => {
         // Ternary;
         // if post has allow comments, set it to true, otherwise to false
         const commentsAllowed = req.body.allowComments ? true : false;
@@ -30,17 +29,16 @@ module.exports = {
             description: req.body.description,
             status: req.body.status,
             allowComments: commentsAllowed
-        });
+        })
 
         newPost.save().then(post => {
-            console.log(post);
-            req.flash('success-message', 'Post created successfully');
-            res.redirect('/admin/posts');
-        });
+                console.log(post);
+                req.flash('success-message', 'Post created successfully');
+                res.redirect('/admin/posts');
+            });
     },
 
     editPostGetRoute: (req, res) => {
-        console.log('editPostGetRoute hit');
         // Find the post, send an id param whilst accessing this endpoint
         const id = req.params.id;
         // .then() because it's a promise

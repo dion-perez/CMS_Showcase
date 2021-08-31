@@ -57,18 +57,23 @@ module.exports = {
 
     editPostUpdateRoute: (req, res) => {
         const commentsAllowed = req.body.allowComments ? true : false;
-        const id = res.params.id;
+        // const id = req.params.id;
+        // const label = req.body.status;
+        // const description = req.body.description;
+        // const title = req.body.title;
+        //
+        // console.log(`ID is: ${id} - title is ${title} - desc is ${description} - status is ${label}`);
 
         post.findById(id)
             .then(post => {
                 post.title = req.body.title;
                 post.status = req.body.status;
-                post.allowComments = req.body.allowComments;
+                post.allowComments = commentsAllowed;
                 post.description = req.body.description;
 
                 post.save().then(updatedPost => {
                     req.flash('success-message', `The post ${updatedPost.title} has been updated`);
-                    res.redirect('admin/posts');
+                    res.redirect('/admin/posts');
                 });
             });
     },

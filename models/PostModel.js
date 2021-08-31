@@ -3,13 +3,15 @@ const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
     title : {
-        type: String
+        type: String,
+        required: true
     },
 
     // Public/private/draft etc.
     status: {
         type: String,
-        default: 'public'
+        default: 'public',
+        required: true
     },
 
     description: {
